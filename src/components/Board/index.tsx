@@ -13,9 +13,12 @@ const Board = ( props: Props ) => {
       <S.Board>
          <S.Title>{ props.title }</S.Title>
          <S.Value>{ formatValue(props.value) }</S.Value>
-         <S.Status status={ props.status || 'neutral'}>
-            { props.statusValue }
-         </S.Status>
+
+         { props.status &&
+            <S.Status status={ props.status || 'neutral'}>
+               { props.statusValue }
+            </S.Status>
+         }
       </S.Board>
    )
 }
