@@ -1,0 +1,1 @@
+export const formatValue = (value: number):string => value.toFixed(2).replace('.', ',')
