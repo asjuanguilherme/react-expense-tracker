@@ -1,12 +1,20 @@
+import { useState } from 'react'
 import * as S from './styles'
 
 import Container from '../../components/Base/Container'
 import Header from '../../components/Layout/Header'
 import Page from '../../components/Layout/Page'
 import Board from '../../components/Board'
+import History from '../../components/History'
 import Section from '../../components/Layout/Section'
 
-const index = () => {
+//Mockup
+import { HistoryData } from '../../data/history'
+
+const Home = () => {
+   const [data, setData] = useState( HistoryData )
+   const [filteredData, setFilteredData] = useState()
+
    return (
       <Page>
          <Container>
@@ -21,11 +29,11 @@ const index = () => {
             </Section>
 
             <Section paddingTop={ 3 }>
-               
+               <History data={ data } />
             </Section>
          </Container>
       </Page>
    )
 }
 
-export default index
+export default Home
