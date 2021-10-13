@@ -14,4 +14,4 @@ export const Header = styled.header`
 export const Title = styled.h1`
    font-size: 2.5rem;
    font-weight: bold;
-`
+`  
