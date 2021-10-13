@@ -2,6 +2,7 @@ import * as S from './styles'
 import { HistoryItem } from '../../../types/history'
 import { getExtenseDate } from '../../../helpers/date'
 import { formatValue } from '../../../helpers/values'
+import { categoriesDataMockup } from '../../../data/categories'
 
 const index = ( props: HistoryItem ) => {
    return (
@@ -9,13 +10,18 @@ const index = ( props: HistoryItem ) => {
          <S.Date>
             { getExtenseDate(props.date) }
          </S.Date>
+
          <S.Title>
             { props.title }
          </S.Title>
-         <S.Category>
-            { props.category }
+
+         <S.Category color={ categoriesDataMockup[props.category].color } >
+            <span>
+               { categoriesDataMockup[props.category].name }
+            </span>
          </S.Category>
-         <S.Value>
+
+         <S.Value type={ categoriesDataMockup[props.category].type } >
             R$ { formatValue(props.value) }
          </S.Value>
          <S.RemoveItem />

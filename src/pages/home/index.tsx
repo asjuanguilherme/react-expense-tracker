@@ -9,10 +9,10 @@ import History from '../../components/History'
 import Section from '../../components/Layout/Section'
 
 //Mockup
-import { HistoryData } from '../../data/history'
+import { historyDataMockup } from '../../data/history'
 
 const Home = () => {
-   const [data, setData] = useState( HistoryData )
+   const [data, setData] = useState( historyDataMockup )
    const [filteredData, setFilteredData] = useState()
 
    return (
@@ -28,7 +28,7 @@ const Home = () => {
                </S.Dashboard>
             </Section>
 
-            <Section paddingTop={ 3 }>
+            <Section paddingTop={ 3 } paddingBottom={ 3 }>
                <History data={ data } />
             </Section>
          </Container>

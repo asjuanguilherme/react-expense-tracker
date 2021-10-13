@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
    display: flex;
    max-width: 100%;
    justify-content: space-between;
+   align-items: center;
    padding: 1rem;
    width: 100%;
 
@@ -28,6 +29,7 @@ const Section = styled.div`
 `
 
 export const Date = styled(Section)`
+   flex: 1.3;
 `
 
 export const Title = styled(Section)`
@@ -49,12 +51,16 @@ export const Category = styled(Section)`
    span {
       display: inline-block;
       padding: .3rem .8rem;
-      background-color: red;
+      background-color: ${ props => props.color };
+      border-radius: .3rem;
       color: white;
    }
 `
 
-export const Value = styled(Section)`
+export const Value = styled(Section)<{ type: string }>`
+   color: ${ props => props.type === 'income'? '#27C26E' : '#C22743' };
+   font-weight: 600;
+
    @media screen and (max-width: 640px) {
       flex: 1;
       text-align: right;

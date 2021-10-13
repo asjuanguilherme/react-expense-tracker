@@ -1,14 +1,14 @@
 import * as S from './styles'
 import { formatValue } from '../../helpers/values'
 
-interface Board {
+interface Props {
    title: string;
    value: number;
    status?: 'positive' | 'negative' | 'neutral';
    statusValue?: number | string;
 }
 
-const Board = ( props: Board ) => {
+const Board = ( props: Props ) => {
    return (
       <S.Board>
          <S.Title>{ props.title }</S.Title>
