@@ -7,7 +7,9 @@ export const Wrapper = styled.div`
    align-items: center;
    justify-content: space-between;
 
-   padding: .5rem .8rem;
+   height: 2.5rem;
+   width: 20rem;
+   padding: 0 .5rem;
    border-radius: 2rem;
 
    color: ${ props => props.theme.colors.primary };

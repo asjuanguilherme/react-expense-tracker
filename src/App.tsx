@@ -1,6 +1,6 @@
-import { ThemeProvider } from 'styled-components';
-import { light } from './themes/themes';
-import GlobalStyle from './themes/GlobalStyle';
+import { ThemeProvider } from 'styled-components'
+import { light } from './themes/themes'
+import GlobalStyle from './themes/GlobalStyle'
 
 import Home from './pages/home/index'
 

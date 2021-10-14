@@ -11,22 +11,31 @@ import Section from '../../components/Layout/Section'
 //Mockup
 import { historyDataMockup } from '../../data/history'
 import { getTotalExpense, getTotalIncome } from '../../helpers/values'
+import { filterHistoryByMonth } from '../../helpers/history'
 
 const Home = () => {
    const [data, setData] = useState( historyDataMockup )
    const [income, setIncome] = useState(getTotalIncome(data))
    const [expense, setExpense] = useState(getTotalExpense(data))
-   const [filteredData, setFilteredData] = useState()
+   const [date, setDate ] = useState(new Date())
+   const [filteredData, setFilteredData] = useState(filterHistoryByMonth(data, date))
 
    useEffect(() => {
-      setIncome(getTotalIncome(data))
-      setExpense(getTotalExpense(data))
-   }, [data])
+      setFilteredData(filterHistoryByMonth(data, date))
+   }, [date])
+
+   useEffect(() => {
+      setIncome(getTotalIncome(filteredData))
+      setExpense(getTotalExpense(filteredData))
+   }, [filteredData])
+
+
+   const changeDate = (date: Date) => setDate(date)
 
    return (
       <Page>
          <Container>
-            <Header />
+            <Header dateController={[date, changeDate]} />
 
             <Section paddingTop={ 3 }>
                <S.Dashboard>
@@ -37,7 +46,7 @@ const Home = () => {
             </Section>
 
             <Section paddingTop={ 3 } paddingBottom={ 3 }>
-               <History data={ data } />
+               <History data={ filteredData } />
             </Section>
          </Container>
       </Page>

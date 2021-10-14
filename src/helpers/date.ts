@@ -1,4 +1,4 @@
-const getExtenseMonth = (month: number) => {
+export const getExtenseMonth = (month: number) => {
    const monthList = [
       'Janeiro',
       'Fevereiro',
@@ -23,4 +23,9 @@ export const getExtenseDate = (date: Date) => {
    const year = date.getFullYear()
 
    return `${day} de ${getExtenseMonth(month)} de ${year}`
+}
+
+export const getCurrentMonth = () : number => {
+   const now = new Date()
+   return now.getMonth()
 }

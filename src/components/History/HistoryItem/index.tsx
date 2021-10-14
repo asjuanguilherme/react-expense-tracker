@@ -24,6 +24,7 @@ const index = ( props: HistoryItem ) => {
          <S.Value type={ categoriesDataMockup[props.category].type } >
             R$ { formatValue(props.value) }
          </S.Value>
+         
          <S.RemoveItem />
       </S.Wrapper>
    )

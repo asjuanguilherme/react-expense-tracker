@@ -9,10 +9,15 @@ interface Props {
 }
 
 const Board = ( props: Props ) => {
+   
+   const formatedValue = formatValue(props.value)
+   
    return (
       <S.Board>
          <S.Title>{ props.title }</S.Title>
-         <S.Value>{ formatValue(props.value) }</S.Value>
+         <S.Value bigger={ formatedValue.length > 7 ? true : false } >
+            { formatedValue }
+         </S.Value>
 
          { props.status &&
             <S.Status status={ props.status || 'neutral'}>

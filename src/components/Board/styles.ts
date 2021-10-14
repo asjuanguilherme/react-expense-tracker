@@ -16,7 +16,17 @@ export const Title = styled.h2`
    font-weight: bold;
 `
 
-export const Value = styled.span`
+const BigValue = css`
+   font-size: 3.5rem;
+
+   @media screen and (max-width: 991px) { font-size: 2rem; }
+
+   @media screen and (max-width: 768px) { font-size: 1.5rem; }
+
+   @media screen and (max-width: 640px) { font-size: 2.5rem; }
+`
+
+export const Value = styled.span<{ bigger: boolean }>`
    flex: 1;
    color: ${ props => props.theme.colors.primary };
    padding: 1.5rem 0;
@@ -28,6 +38,8 @@ export const Value = styled.span`
    @media screen and (max-width: 768px) { font-size: 2rem; }
 
    @media screen and (max-width: 640px) { font-size: 3rem; }
+
+   ${ props => props.bigger? BigValue : '' }
 
    &::before {
       content: 'R$';
