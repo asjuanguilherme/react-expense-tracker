@@ -3,6 +3,8 @@ import { categoriesDataMockup } from '../data/categories'
 
 export const formatValue = (value: number):string => value.toFixed(2).replace('.', ',')
 
+export const getNumberValue = (value: string) :number => parseFloat(value.replace(',','.'))
+
 export const getTotalIncome = ( historyList: HistoryItem[] ) => {
    let totalIncome = 0
    

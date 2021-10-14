@@ -9,13 +9,14 @@ import History from '../../components/History'
 import Section from '../../components/Layout/Section'
 
 import { historyDataMockup } from '../../data/history'
+import * as history from '../../services/history'
 
 import { getTotalExpense, getTotalIncome } from '../../helpers/values'
 import { filterHistoryByMonth } from '../../helpers/history'
 import AddItem from '../../components/AddItem'
 
 const Home = () => {
-   const [data, setData] = useState( historyDataMockup )
+   const [data, setData] = useState(historyDataMockup)
    const [income, setIncome] = useState(getTotalIncome(data))
    const [expense, setExpense] = useState(getTotalExpense(data))
    const [date, setDate ] = useState(new Date())
@@ -29,6 +30,13 @@ const Home = () => {
       setIncome(getTotalIncome(filteredData))
       setExpense(getTotalExpense(filteredData))
    }, [filteredData])
+
+   useEffect( () => {
+      console.log('data')
+      console.log(data)
+      console.log('datalocal')
+      console.log(history.getItems())
+   }, [])
 
    return (
       <Page>

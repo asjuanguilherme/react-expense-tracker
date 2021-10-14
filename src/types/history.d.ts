@@ -1,6 +1,6 @@
 export interface HistoryItem {
    id: number;
-   date: Date;
+   date: string;
    title: string;
    category: string;
    value: number;

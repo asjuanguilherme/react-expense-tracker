@@ -5,6 +5,9 @@ import { formatValue } from '../../../helpers/values'
 import { categoriesDataMockup } from '../../../data/categories'
 
 const index = ( props: HistoryItem ) => {
+   
+   const category = categoriesDataMockup.filter( category => category.slug === props.category)[0]
+
    return (
       <S.Wrapper>
          <S.Date>
@@ -15,13 +18,13 @@ const index = ( props: HistoryItem ) => {
             { props.title }
          </S.Title>
 
-         <S.Category color={ categoriesDataMockup[props.category].color } >
+         <S.Category color={ category.color } >
             <span>
-               { categoriesDataMockup[props.category].name }
+               { category }
             </span>
          </S.Category>
 
-         <S.Value type={ categoriesDataMockup[props.category].type } >
+         <S.Value type={ category.type } >
             R$ { formatValue(props.value) }
          </S.Value>
          

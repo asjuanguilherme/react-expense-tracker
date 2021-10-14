@@ -10,11 +10,15 @@ interface Validation {
 const validationTypes : Validation = {
    date: {
       regex: /^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$/,
-      message: 'Insira uma data válida.'
+      message: 'Data inválida.'
    },
    name: {
-      regex: /^.{3,}/,
+      regex: /^.{3,}$/,
       message: 'Muito pequeno'
+   },
+   value: {
+      regex: /^[0-9]{0,}([,][0-9]{0,})?$/,
+      message: 'Valor inválido'
    },
    default: {
       regex: /^.{1,}$/,

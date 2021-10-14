@@ -1,3 +1,11 @@
+export const splitDate = ( date: string ) :number[] => date.split('-').map( a => Number(a))
+
+export const getObjectDate = (date: string) : Date => {
+   const [year, month, day] = splitDate(date)
+
+   return new Date(year, month-1, day)
+}
+
 export const getExtenseMonth = (month: number) => {
    const monthList = [
       'Janeiro',
@@ -17,12 +25,10 @@ export const getExtenseMonth = (month: number) => {
    return monthList[month]
 }
 
-export const getExtenseDate = (date: Date) => {
-   const day = date.getDate()
-   const month = date.getMonth()
-   const year = date.getFullYear()
+export const getExtenseDate = (date: string) => {
+   const [year, month, day] = splitDate(date)
 
-   return `${day} de ${getExtenseMonth(month)} de ${year}`
+   return `${day} de ${getExtenseMonth(month-1)} de ${year}`
 }
 
 export const getCurrentMonth = () : number => {
@@ -43,5 +49,3 @@ export const getTodayDate = (format: 'yyyy-mm-dd' | 'dd-mm-yyyy' = 'yyyy-mm-dd' 
          return`${day}-${month}-${year}`
    }
 }
-
-console.log(getTodayDate())

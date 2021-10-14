@@ -1,19 +1,22 @@
 import { Category } from "../types/category" 
 
-export const categoriesDataMockup: Category = {
-   food: {
+export const categoriesDataMockup: Category[] = [
+   {
+      slug: 'food',
       name: 'Alimentação',
       type: 'expense',
       color: 'orangered',
    },
-   salary: {
+   {
+      slug: 'salary',
       name: 'Salário',
       type: 'income',
       color: '#27C26E',
    },
-   others: {
+   {
+      slug: 'others',
       name: 'Outros',
       type: 'expense',
       color: 'red',
    }
-}
+]
