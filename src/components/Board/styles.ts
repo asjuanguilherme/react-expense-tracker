@@ -56,7 +56,7 @@ const StatusPositive = css`
 
 const StatusNegative = css`
    background-color: #FFDEEA;
-   color: #C22743;
+   color: ${ props => props.theme.colors.danger } ;
 `
 
 export const Status = styled.span<{ status: 'positive' | 'negative' | 'neutral'}>`

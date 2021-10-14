@@ -8,10 +8,11 @@ import Board from '../../components/Board'
 import History from '../../components/History'
 import Section from '../../components/Layout/Section'
 
-//Mockup
 import { historyDataMockup } from '../../data/history'
+
 import { getTotalExpense, getTotalIncome } from '../../helpers/values'
 import { filterHistoryByMonth } from '../../helpers/history'
+import AddItem from '../../components/AddItem'
 
 const Home = () => {
    const [data, setData] = useState( historyDataMockup )
@@ -29,13 +30,10 @@ const Home = () => {
       setExpense(getTotalExpense(filteredData))
    }, [filteredData])
 
-
-   const changeDate = (date: Date) => setDate(date)
-
    return (
       <Page>
          <Container>
-            <Header dateController={[date, changeDate]} />
+            <Header dateController={[date, setDate]} />
 
             <Section paddingTop={ 3 }>
                <S.Dashboard>
@@ -45,7 +43,11 @@ const Home = () => {
                </S.Dashboard>
             </Section>
 
-            <Section paddingTop={ 3 } paddingBottom={ 3 }>
+            <Section paddingTop={ 3 }>
+               <AddItem />
+            </Section>
+
+            <Section paddingTop={ 1.5 } paddingBottom={ 3 }>
                <History data={ filteredData } />
             </Section>
          </Container>

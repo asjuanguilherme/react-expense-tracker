@@ -7,14 +7,14 @@ interface Props {
 
 const index = ({ dateController }: Props) => {
    
-   const [date, changeDate] = dateController
+   const [date, setDate] = dateController
    const day = date.getDate()
    const month = date.getMonth()
    const year = date.getFullYear()
 
    const updateDate = ( action: 'inc' | 'dec' ) => {
-      if(action === 'inc') changeDate(new Date(year, month+1, day))
-      if(action === 'dec') changeDate(new Date(year, month-1, day))
+      if(action === 'inc') setDate(new Date(year, month+1, day))
+      if(action === 'dec') setDate(new Date(year, month-1, day))
    }
 
    return (

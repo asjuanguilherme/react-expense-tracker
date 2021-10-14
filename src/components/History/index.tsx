@@ -12,6 +12,8 @@ const History = ( props: Props ) => {
    const renderHistoryList = () => (
       props.data.map( item => (
          <HistoryItem
+            key={ item.id }
+            id={ item.id }
             date={ item.date }
             title={ item.title }
             value={ item.value }
