@@ -3,18 +3,20 @@ import * as S from './styles'
 
 interface Props {
    label: string;
-   onClick: VoidFunction;
+   onClick?: VoidFunction;
    icon?: ReactComponentElement<any>;
    variant?: string;
+   href?: string;
+   target?: string;
 }
 
-const Button = ({label, onClick, icon, variant = 'primary'} : Props) => {
+const Button = ({label, onClick, icon, variant = 'primary', href, target} : Props) => {
    return (
-      <S.Wrapper onClick={ onClick } variant={ variant } >
-         <span>
+      <S.Wrapper onClick={ onClick } variant={ variant }>
+         <a href={ href } target={ target } >
             { label }
-         </span>
-         { icon }
+            { icon }
+         </a>
       </S.Wrapper>
    )
 }

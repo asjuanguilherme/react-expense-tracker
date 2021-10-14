@@ -1,4 +1,3 @@
-import { Console } from 'console'
 import { useState } from 'react'
 
 interface Validation {

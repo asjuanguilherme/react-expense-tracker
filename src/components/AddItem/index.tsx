@@ -16,18 +16,18 @@ const AddItem = () => {
 
    const handleSubmit = ( e: FormEvent<HTMLFormElement> ) => {
       e.preventDefault()
-      if( date.validate() && category.validate() && title.validate() && value.validate()) {
-           
+      if( date.validate(), category.validate(), title.validate(), value.validate()) {
+         
       }
    }
 
    return (
-      <S.FormContainer onSubmit={ handleSubmit } >
+      <S.FormContainer onSubmit={ handleSubmit }>
          <Input id='addItem-date' type='date'  {...date}/>
          <Input id='addItem-category' type='text' {...category}/>
          <Input id='addItem-title' type='text'  {...title}/>
          <Input id='addItem-value' type='text' {...value}/>
-         <Button label="Adicionar" icon={ <FaPlus /> } onClick={ () => console.log('olá') } />
+         <Button label="Adicionar" icon={ <FaPlus /> } />
       </S.FormContainer>
    )
 }
