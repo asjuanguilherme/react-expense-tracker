@@ -2,6 +2,12 @@ import * as S from './styles'
 import InputMask from 'react-input-mask'
 import { FaExclamationCircle } from 'react-icons/fa'
 import { ChangeEventHandler, FocusEventHandler } from 'react'
+import SelectOption from './SelectOption'
+
+type Option = {
+   value: string;
+   name: string;
+}
 
 interface Props {
    label: string;
@@ -10,16 +16,18 @@ interface Props {
    value: string;
    onChange: ChangeEventHandler;
    onBlur: FocusEventHandler;
-   options: any;
+   options: Option[];
 }
 
 const Select = ( { label, id, error = null, onChange, onBlur, options } : Props) => {
    
-   // const renderOptions = () => (
-   //    options.map( option => (
-   //       <S.Option value={option}>{ Object.keys(option)[0] }</S.Option>
-   //    ))
-   // )
+   const renderOptions = () => (
+      options.map((option, index) => (
+         <SelectOption value={option.value} name={option.name} />
+      ))
+   )
+
+   //onChange={ onChange } onBlur={ onBlur }
 
    return (
       <S.Wrapper>
@@ -27,8 +35,10 @@ const Select = ( { label, id, error = null, onChange, onBlur, options } : Props)
             <S.Label htmlFor={ id }> { label } </S.Label>
          }
 
-         <S.Select onChange={ onChange } onBlur={ onBlur } error={ error }>
-            {/* { renderOptions() } */}
+         <S.Select error={ error } onBlur={ onBlur }>
+            <S.OptionsList>
+               { renderOptions() }
+            </S.OptionsList>
          </S.Select>
 
          { error &&

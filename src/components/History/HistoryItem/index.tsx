@@ -20,7 +20,7 @@ const index = ( props: HistoryItem ) => {
 
          <S.Category color={ category.color } >
             <span>
-               { category }
+               { category.name }
             </span>
          </S.Category>
 

@@ -20,6 +20,10 @@ const validationTypes : Validation = {
       regex: /^[0-9]{0,}([,][0-9]{0,})?$/,
       message: 'Valor inválido'
    },
+   select: {
+      regex: /.{0,}/,
+      message: 'Nenhum selecionado'
+   },
    default: {
       regex: /^.{1,}$/,
       message: ''

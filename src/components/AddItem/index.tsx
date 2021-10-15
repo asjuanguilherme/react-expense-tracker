@@ -2,7 +2,6 @@ import * as S from './styles'
 import { useState, useEffect, FormEvent } from 'react'
 import useForm from '../../hooks/useForm'
 import Input from '../Form/Input'
-import Select from '../Form/Select'
 import { FaPlus } from 'react-icons/fa'
 
 import Button from '../Button'
@@ -10,6 +9,7 @@ import { getTodayDate } from '../../helpers/date'
 import { getNumberValue } from '../../helpers/values'
 import * as history from '../../services/history'
 import { categoriesDataMockup } from '../../data/categories'
+import Select from '../Form/Select'
 
 const AddItem = () => {
 
@@ -34,11 +34,18 @@ const AddItem = () => {
       console.log()
    })
 
+   const categoryOptions = (
+      categoriesDataMockup.map( category => ({
+         name: category.name,
+         value: category.slug
+      }))
+   )
+
    return (
       <S.FormContainer onSubmit={ handleSubmit }>
          <Input id='addItem-date' type='date'  {...date}/>
-         {/* <Input id='addItem-category' type='text' {...category}/> */}
-         <Select id='addItem-category' options={categoriesDataMockup} {...category}/>
+         {/* <Select id='addItem-category' options={categoryOptions} {...category} /> */}
+         <Select id='addItem-category' options={categoryOptions} />
          <Input id='addItem-title' type='text'  {...title}/>
          <Input id='addItem-value' type='text' {...value}/>
          <Button label="Adicionar" icon={ <FaPlus /> } />
