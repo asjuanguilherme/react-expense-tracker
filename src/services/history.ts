@@ -8,20 +8,12 @@ export const getItems = (): HistoryItem[] => {
   return JSON.parse(JSONData)
 }
 
-export const insertItem = (
-  date: string,
-  categorySlug: string,
-  title: string,
-  value: number
-) => {
+export const insertItem = (data: HistoryItem) => {
   const historyList = getItems()
 
   historyList.push({
-    id: historyList.length,
-    date: date,
-    category: categorySlug,
-    title: title,
-    value: value
+    ...data,
+    id: historyList.length
   })
 
   const JSONData = JSON.stringify(historyList)

@@ -1,5 +1,5 @@
 import * as S from './styles'
-import { useState, useEffect, FormEvent } from 'react'
+import { useContext, FormEvent } from 'react'
 import useForm from '../../hooks/useForm'
 import Input from '../Form/Input'
 import { FaPlus } from 'react-icons/fa'
@@ -7,11 +7,13 @@ import { FaPlus } from 'react-icons/fa'
 import Button from '../Button'
 import { getTodayDate } from '../../helpers/date'
 import { getNumberValue } from '../../helpers/values'
-import * as history from '../../services/history'
 import { categoriesDataMockup } from '../../data/categories'
 import Select from '../Form/Select'
+import { GlobalContext } from '../../context/GlobalContext'
 
 const AddItem = () => {
+  const { addNewItem } = useContext(GlobalContext)
+
   const date = useForm('date', 'Data', getTodayDate('yyyy-mm-dd'))
   const category = useForm('default', 'Categoria')
   const title = useForm('name', 'Titulo', 'Transação')
@@ -29,12 +31,13 @@ const AddItem = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (validateNewItem()) {
-      history.insertItem(
-        date.value,
-        category.value,
-        title.value,
-        getNumberValue(value.value)
-      )
+      addNewItem({
+        id: 0,
+        title: title.value,
+        category: category.value,
+        value: getNumberValue(value.value),
+        date: date.value
+      })
     }
   }
 

@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useState, useEffect } from 'react'
-import { getItems } from '../services/history'
+import { getItems, insertItem } from '../services/history'
 import { filterHistoryByMonth } from '../helpers/history'
 import { getTotalIncome, getTotalExpense } from '../helpers/values'
 import { HistoryItem } from '../types/history'
@@ -15,6 +15,7 @@ type GlobalContextType = {
   setDate: (date: Date) => void
   filteredData: HistoryItem[]
   setFilteredData: (data: HistoryItem[]) => void
+  addNewItem: (data: HistoryItem) => void
 }
 
 export const GlobalContext = createContext<GlobalContextType>(
@@ -43,6 +44,14 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
     setExpense(getTotalExpense(filteredData))
   }, [filteredData])
 
+  const addNewItem = (itemData: HistoryItem) => {
+    const newHistoryData = [...data]
+    newHistoryData.push(itemData)
+
+    setData(newHistoryData)
+    insertItem(itemData)
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -55,7 +64,8 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
         income,
         setIncome,
         expense,
-        setExpense
+        setExpense,
+        addNewItem
       }}
     >
       {children}
