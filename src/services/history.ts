@@ -1,7 +1,9 @@
 import { HistoryItem } from '../types/history'
 
 export const getItems = (): HistoryItem[] => {
-  const JSONData = localStorage.getItem('HISTORY_LIST') || ''
+  const JSONData = localStorage.getItem('HISTORY_LIST')
+
+  if (!JSONData) return []
 
   return JSON.parse(JSONData)
 }

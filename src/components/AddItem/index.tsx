@@ -17,11 +17,18 @@ const AddItem = () => {
   const title = useForm('name', 'Titulo', 'Transação')
   const value = useForm('value', 'Valor', '0,00')
 
+  const validateNewItem = (): boolean => {
+    return (
+      date.validate() &&
+      category.validate() &&
+      title.validate() &&
+      value.validate()
+    )
+  }
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (
-      (date.validate(), category.validate(), title.validate(), value.validate())
-    ) {
+    if (validateNewItem()) {
       history.insertItem(
         date.value,
         category.value,
@@ -31,10 +38,6 @@ const AddItem = () => {
     }
   }
 
-  useEffect(() => {
-    console.log()
-  })
-
   const categoryOptions = categoriesDataMockup.map(category => ({
     name: category.name,
     value: category.slug
@@ -43,8 +46,7 @@ const AddItem = () => {
   return (
     <S.FormContainer onSubmit={handleSubmit}>
       <Input id="addItem-date" type="date" {...date} />
-      {/* <Select id='addItem-category' options={categoryOptions} {...category} /> */}
-      <Select id="addItem-category" options={categoryOptions} />
+      <Select id="addItem-category" options={categoryOptions} {...category} />
       <Input id="addItem-title" type="text" {...title} />
       <Input id="addItem-value" type="text" {...value} />
       <Button label="Adicionar" icon={<FaPlus />} />

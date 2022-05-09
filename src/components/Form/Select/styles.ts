@@ -47,9 +47,7 @@ export const Select = styled.select<{ error: string | null }>`
   ${props => (props.error ? SelectError : '')}
 `
 
-export const OptionsList = styled.div``
-
-export const Option = styled.div``
+export const Option = styled.option``
 
 const showError = keyframes`
    from {
