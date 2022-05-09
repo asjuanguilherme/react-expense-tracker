@@ -2,19 +2,17 @@ import * as S from './styles'
 import DateController from '../../DateController'
 
 interface Props {
-   dateController: [Date, Function];
+  dateController: [Date, Function]
 }
 
 const Header = ({ dateController }: Props) => {
-   return (
-      <S.Header>
-         <S.Title>
-            Controle Financeiro
-         </S.Title>
+  return (
+    <S.Header>
+      <S.Title>Controle Financeiro</S.Title>
 
-         <DateController dateController={[...dateController]} />
-      </S.Header>
-   )
+      <DateController dateController={[...dateController]} />
+    </S.Header>
+  )
 }
 
 export default Header

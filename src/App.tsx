@@ -6,7 +6,7 @@ import Home from './pages/home/index'
 
 const App = () => {
   return (
-    <ThemeProvider theme={ light }>
+    <ThemeProvider theme={light}>
       <GlobalStyle />
       <Home />
     </ThemeProvider>

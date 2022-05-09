@@ -15,8 +15,8 @@ const GlobalStyle = createGlobalStyle`
    
    html,body, #root {
       height: 100%;
-      background-color: ${ light.colors.background };
-      color: ${ light.colors.primaryDarken }
+      background-color: ${light.colors.background};
+      color: ${light.colors.primaryDarken}
    }
 
    #root {

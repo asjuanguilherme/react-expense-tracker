@@ -1,13 +1,13 @@
 export interface Theme {
-   borderRadius?: string;
+  borderRadius?: string
 
-   colors: {
-      primary: string;
-      primaryDarken: string;
-      background: string;
-      
-      danger: string;
-      success: string;
-      disabled: string;
-   }
+  colors: {
+    primary: string
+    primaryDarken: string
+    background: string
+
+    danger: string
+    success: string
+    disabled: string
+  }
 }

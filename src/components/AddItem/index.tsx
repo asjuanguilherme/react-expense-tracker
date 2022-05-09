@@ -12,45 +12,44 @@ import { categoriesDataMockup } from '../../data/categories'
 import Select from '../Form/Select'
 
 const AddItem = () => {
+  const date = useForm('date', 'Data', getTodayDate('yyyy-mm-dd'))
+  const category = useForm('default', 'Categoria')
+  const title = useForm('name', 'Titulo', 'Transação')
+  const value = useForm('value', 'Valor', '0,00')
 
-   const date = useForm('date', 'Data', getTodayDate('yyyy-mm-dd'))
-   const category = useForm('default', 'Categoria')
-   const title = useForm('name', 'Titulo','Transação')
-   const value = useForm('value', 'Valor', '0,00')
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (
+      (date.validate(), category.validate(), title.validate(), value.validate())
+    ) {
+      history.insertItem(
+        date.value,
+        category.value,
+        title.value,
+        getNumberValue(value.value)
+      )
+    }
+  }
 
-   const handleSubmit = ( e: FormEvent<HTMLFormElement> ) => {
-      e.preventDefault()
-      if( date.validate(), category.validate(), title.validate(), value.validate()) {
-         history.insertItem(
-            date.value,
-            category.value,
-            title.value,
-            getNumberValue(value.value)
-         )
-      }
-   }
+  useEffect(() => {
+    console.log()
+  })
 
-   useEffect( () => {
-      console.log()
-   })
+  const categoryOptions = categoriesDataMockup.map(category => ({
+    name: category.name,
+    value: category.slug
+  }))
 
-   const categoryOptions = (
-      categoriesDataMockup.map( category => ({
-         name: category.name,
-         value: category.slug
-      }))
-   )
-
-   return (
-      <S.FormContainer onSubmit={ handleSubmit }>
-         <Input id='addItem-date' type='date'  {...date}/>
-         {/* <Select id='addItem-category' options={categoryOptions} {...category} /> */}
-         <Select id='addItem-category' options={categoryOptions} />
-         <Input id='addItem-title' type='text'  {...title}/>
-         <Input id='addItem-value' type='text' {...value}/>
-         <Button label="Adicionar" icon={ <FaPlus /> } />
-      </S.FormContainer>
-   )
+  return (
+    <S.FormContainer onSubmit={handleSubmit}>
+      <Input id="addItem-date" type="date" {...date} />
+      {/* <Select id='addItem-category' options={categoryOptions} {...category} /> */}
+      <Select id="addItem-category" options={categoryOptions} />
+      <Input id="addItem-title" type="text" {...title} />
+      <Input id="addItem-value" type="text" {...value} />
+      <Button label="Adicionar" icon={<FaPlus />} />
+    </S.FormContainer>
+  )
 }
 
 export default AddItem

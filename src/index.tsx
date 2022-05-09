@@ -3,4 +3,4 @@ import App from './App'
 
 const appRoot = document.getElementById('root')
 
-ReactDOM.render( <App/>, appRoot)
+ReactDOM.render(<App />, appRoot)
