@@ -1,42 +1,17 @@
-import { useState, useEffect } from 'react'
 import * as S from './styles'
-
+import { useContext } from 'react'
+import { GlobalContext } from '../../context/GlobalContext'
 import Container from '../../components/Base/Container'
 import Header from '../../components/Layout/Header'
 import Page from '../../components/Layout/Page'
 import Board from '../../components/Board'
 import History from '../../components/History'
 import Section from '../../components/Layout/Section'
-
-import { historyDataMockup } from '../../data/history'
-import * as history from '../../services/history'
-
-import { getTotalExpense, getTotalIncome } from '../../helpers/values'
-import { filterHistoryByMonth } from '../../helpers/history'
 import AddItem from '../../components/AddItem'
 
 const Home = () => {
-  const [data, setData] = useState(history.getItems())
-  const [income, setIncome] = useState(getTotalIncome(data))
-  const [expense, setExpense] = useState(getTotalExpense(data))
-  const [date, setDate] = useState(new Date())
-  const [filteredData, setFilteredData] = useState(
-    filterHistoryByMonth(data, date)
-  )
-
-  useEffect(() => {
-    setFilteredData(filterHistoryByMonth(data, date))
-  }, [date])
-
-  useEffect(() => {
-    setIncome(getTotalIncome(filteredData))
-    setExpense(getTotalExpense(filteredData))
-  }, [filteredData])
-
-  useEffect(() => {
-    console.log(data)
-  }, [])
-
+  const { date, setDate, income, expense, filteredData } =
+    useContext(GlobalContext)
   return (
     <Page>
       <Container>
