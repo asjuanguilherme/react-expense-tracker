@@ -60,8 +60,8 @@ export const Category = styled(Section)`
 export const Value = styled(Section)<{ type: string }>`
   color: ${props =>
     props.type === 'income'
-      ? '${ props => props.theme.colors.success } '
-      : '${ props => props.theme.colors.danger } '};
+      ? props.theme.colors.success
+      : props.theme.colors.danger};
   font-weight: 600;
 
   @media screen and (max-width: 768px) {
